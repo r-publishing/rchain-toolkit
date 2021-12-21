@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es2015"],
+    "strict": true,
+    "declaration": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "typeRoots": ["src/rnode-protos"],
+    "moduleResolution": "node",     
+  },
+  "files": [
+    "./src/rnode-protos.js",
+    "./src/rnode-protos.d.ts"
+  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "../../node_modules", "**/*.spec.ts"]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "rchain-toolkit",
+  "version": "0.4.3",
+  "private": true,
+  "description": "Node JS utils and methods to interact with rchain's rnode api and proto interfaces",
+  "keywords": [
+    "rchain",
+    "rnode",
+    "rholang",
+    "blockchain",
+    "dag",
+    "smart contract",
+    "grpc"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "targets": {
+    "browser": {
+      "engines": {
+        "browsers": [
+          "last 1 chrome version"
+        ]
+      }
+    }
+  },
+  "scripts": {
+    "test:jest": "jest",
+    "test:full": "node test.js",
+    "build:types": "tsc -p tsconfig.json -t esnext -d --emitDeclarationOnly --outDir dist/ && cp -r src/protobuf dist/ && cp src/rnode-protos* dist/",
+    "build:rollup": "npx rollup -c rollup.config.cjs.js",
+    "build": "npm run build:rollup && npm run build:types",
+    "compile": "tsc --module commonjs src/index.ts --outDir dist -d && cp -r src/protobuf dist/ && cp src/rnode-protos* dist/",
+    "compile:tests": "cp -r src/protobuf testsc/src/ && cp src/rnode-protos.js testsc/src/ && tsc tests/index.ts --outDir testsc",
+    "compile:examples": "rm examples/*.js && tsc examples/*"
+  },
+  "author": "FABCO",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.3.3",
+    "@grpc/grpc-js": "^1.3.7",
+    "@grpc/proto-loader": "^0.6.5",
+    "@rollup/plugin-commonjs": "^22.0.0-4",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@types/elliptic": "^6.4.13",
+    "@types/node": "^12.0.8",
+    "rollup": "^2.42.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-polyfill-node": "^0.8.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-loader": "^6.0.3",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.0"
+  },
+  "dependencies": {
+    "blakejs": "^1.1.0",
+    "buffer": "^6.0.3",
+    "elliptic": "6.5.4",
+    "js-sha3": "^0.8.0",
+    "keccak256": "^1.0.3",
+    "ky": "0.25.1",
+    "ky-universal": "0.8.2",
+    "protobufjs": "^6.11.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.0"
+  }
+}
